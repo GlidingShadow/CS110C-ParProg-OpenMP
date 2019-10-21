@@ -4,62 +4,57 @@
 #include <chrono>
 #include <vector>
 
-#include "proto-demos.hpp"
+#include "parallelSearch.hpp"
 
-using namespace std::chrono;
-
-
-long sequentialSearch(std::vector<int> v, int a)
+long sequentialSearch(std::vector<int> d_set, int search)
 {
 
-	bool exists = false;
+	auto start = std::chrono::high_resolution_clock::now();
 
-	auto start = high_resolution_clock::now();
+	for (int i = 0; i < d_set.size(); i++) {
 
-	for (int i = 0; i < v.size(); i++) {
+		if (search == d_set.at(i)) {
 
-		if (a == v.at(i)) {
-
-			exists = true;
+			break;
 
 		}
 	}
 
-	auto stop = high_resolution_clock::now();
-	auto duration = duration_cast<nanoseconds>(stop - start);
+	auto stop = std::chrono::high_resolution_clock::now();
+	auto duration =
+	    std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start);
 	long time = duration.count();
 
 	return time;
 
 }
 
-long parallelSequentialSearch(std::vector<int> v, int a)
+long parallelSequentialSearch(std::vector<int> d_set, int search)
 {
 
-	bool exists = false;
-
-	auto start = high_resolution_clock::now();
+	auto start = std::chrono::high_resolution_clock::now();
 
 	int i = 0;
-	#pragma omp parallel private(i) shared(exists)
+	#pragma omp parallel private(i) shared(d_set)
 	#pragma omp parallel for schedule(static, 10000)
 	for (i = 0; i < 1000; i++) {
 
-		if (a == v.at(i)) {
+		if (search == d_set.at(i)) {
 
-			exists = true;
+			#pragma omp cancel for
 
 		}
-
 	}
 
-	auto stop = high_resolution_clock::now();
-	auto duration = duration_cast<nanoseconds>(stop - start);
+	auto stop = std::chrono::high_resolution_clock::now();
+	auto duration =
+	    std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start);
 	long time = duration.count();
 
 	return time;
 }
 
+/*
 int main()
 {
 
@@ -89,3 +84,4 @@ int main()
 	return 0;
 
 }
+*/

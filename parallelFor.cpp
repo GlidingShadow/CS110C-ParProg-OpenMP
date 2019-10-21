@@ -2,7 +2,7 @@
 #include <omp.h>
 #include <chrono>
 
-#include "proto-demos.hpp"
+#include "parallelFor.hpp"
 
 using namespace std::chrono;
 
@@ -38,6 +38,7 @@ long nonParallelFor()
 	return time;
 }
 
+/*
 int main()
 {
 
@@ -61,3 +62,4 @@ int main()
 
 	return 0;
 }
+*/

@@ -1,14 +1,14 @@
 # A list of files to use during compilation
 # Remember to update for each file added
-srcfiles = o-mp.cpp
+srcfiles = o-mp.cpp parallelFor.cpp parallelSearch.cpp
 
-objfiles = o-mp.o
+objfiles = o-mp.o parallelFor.o parallelSearch.o
 
 all : $(srcfiles)
-	g++ -c $^
+	g++ -c $^ -fopenmp
 
 build : $(objfiles)
-	ld -o o-mp $^
+	g++ -o o-mp.out $^ -fopenmp
 
 buildtest : $(objfiles)
-	ld -o o-mp_test $^
+	g++ -o o-mp_test.out $^ -fopenmp
