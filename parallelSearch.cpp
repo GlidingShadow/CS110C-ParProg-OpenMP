@@ -28,7 +28,7 @@ long parallelSequentialSearch(std::vector<int> v, int a) {
 	int i = 0;
 	#pragma omp parallel private(i) shared(exists)
   	#pragma omp parallel for schedule(static, 10000)
-	for (i = 0; i < 1000; i++) {
+	for (i = 0; i < v.size(); i++) {
 		if (a == v.at(i)) {
 			exists = true;
 		}
