@@ -44,8 +44,8 @@ int main() {
 	for(int i = 0; i < 5000000; i++) {
 		v.push_back(i);
 	}
-	long c = sequentialSearch(v, 678);
-	long d = parallelSequentialSearch(v,678);
+	long c = sequentialSearch(v, 3500000);
+	long d = parallelSequentialSearch(v,3500000);
 	std::cout<<"sequentialSearch(): " << c <<"\nparallelSequential(): " << d <<std::endl;
 
   if(d<c) {
