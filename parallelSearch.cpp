@@ -67,6 +67,7 @@ int main()
 	long c = sequentialSearch(v, 678);
 	long d = parallelSequentialSearch(v,678);
 
+
 	std::cout << "sequentialSearch(): " << c
 		  << "\nparallelSequential(): " << d
 		  << std::endl;
