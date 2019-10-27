@@ -3,8 +3,8 @@
 #include <random>
 #include <omp.h>
 
-#include "parallelSearch.hpp"
-#include "parallelFor.hpp"
+#include "o-mp-headers/parallelSearch.hpp"
+#include "o-mp-headers/parallelFor.hpp"
 
 int main(void)
 {
