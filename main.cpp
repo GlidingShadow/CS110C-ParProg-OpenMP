@@ -1,10 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <random>
-#include <omp.h>
-
-#include "o-mp-headers/parallelSearch.hpp"
-#include "o-mp-headers/parallelFor.hpp"
+#include "o-mp_demo.hpp"
 
 int main(void)
 {
@@ -37,9 +31,10 @@ int main(void)
 	long sitr = nonParallelFor();
 	long pitr = parallelFor();
 
-	std::cout << "For loops iterated over 5000000 iterations (nanoseconds):\n"
-		  << "Single-threaded: " << sitr << std::endl
-		  << "Parallelized:    " << pitr << std::endl;
+	std::cout
+		<< "For loops iterated over 5000000 iterations (nanoseconds):\n"
+		<< "Single-threaded: " << sitr << std::endl
+		<< "Parallelized:    " << pitr << std::endl;
 
 	return 0;
 }
