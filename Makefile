@@ -3,12 +3,14 @@
 
 omphead = o-mp-headers
 
-srcfiles = o-mp.cpp $(omphead)/parallelFor.cpp $(omphead)/parallelSearch.cpp
+srcfiles = main.cpp $(omphead)/parallelFor.cpp $(omphead)/parallelSearch.cpp
 
-objfiles = o-mp.o $(omphead)/parallelFor.o $(omphead)/parallelSearch.o
+objfiles = main.o $(omphead)/parallelFor.o $(omphead)/parallelSearch.o
 
 all : $(srcfiles)
-	g++ -c $^ -fopenmp
+	g++ -c main.cpp -fopenmp
+	g++ -c $(omphead)/parallelFor.cpp -o $(omphead)/parallelFor.o -fopenmp
+	g++ -c $(omphead)/parallelSearch.cpp -o $(omphead)/parallelSearch.o -fopenmp
 
 build : $(objfiles)
 	g++ -o o-mp.out $^ -fopenmp

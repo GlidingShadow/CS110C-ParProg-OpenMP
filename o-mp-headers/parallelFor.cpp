@@ -12,8 +12,7 @@ long parallelFor()
 	auto start = high_resolution_clock::now();
 
 	#pragma omp parallel for schedule(static, 10000)
-	for (unsigned i = 0; i < 5000000; ++i) {
-	}
+	for (unsigned i = 0; i < 5000000; ++i);
 
 	auto stop = high_resolution_clock::now();
 	auto duration = duration_cast<nanoseconds>(stop - start);
@@ -28,8 +27,7 @@ long nonParallelFor()
 
 	auto start = high_resolution_clock::now();
 
-	for (unsigned i = 0; i < 5000000; ++i) {
-	}
+	for (unsigned i = 0; i < 5000000; ++i);
 
 	auto stop = high_resolution_clock::now();
 	auto duration = duration_cast<nanoseconds>(stop - start);
